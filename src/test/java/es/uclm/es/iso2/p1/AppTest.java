@@ -5,9 +5,7 @@ import static org.junit.Assert.*;
 import java.util.InputMismatchException;
 
 import org.junit.Assert;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 
 import es.uclm.iso2.p1.Fecha;
 
@@ -39,67 +37,61 @@ public class AppTest {
 		date.setDia(dia);
 	}
 	
-	@SuppressWarnings("deprecation")
-	@Rule
-	public ExpectedException exceptionRule = ExpectedException.none();
 	
-	@Test
+	@Test (expected = InputMismatchException.class)
 	public void testSetDiaFail() {
 		Fecha date = new Fecha();
 		int dia = 36;
-		exceptionRule.expect(InputMismatchException.class);
 		date.setDia(dia);
 	}
 	
 	
 	@Test
 	public void testSetMes() {
-		try {
-			Fecha date = new Fecha();
-			int mes = 6;
-			date.setMes(mes);
-		}catch(Exception ex) {
-			Assert.fail("Se ha producido una excepción");
-		}
+		Fecha date = new Fecha();
+		int mes = 6;
+		date.setMes(mes);
 	}
 	
-	@Test
+	@Test (expected = InputMismatchException.class)
 	public void testSetMesFail() {
 		Fecha date = new Fecha();
-		int mes = 28;
-		exceptionRule.expect(InputMismatchException.class);
-		date.setMes(mes);
+		int mesF = 28;
+		date.setMes(mesF);
 	}
 	
 	@Test
 	public void testSetAnio() {
+		Fecha date = new Fecha();
+		int anio = 2010;
+		date.setAnio(anio);
+	}
+	
+	@Test (expected = InputMismatchException.class)
+	public void testSetAnioFail() {
+		Fecha date = new Fecha();
+		int anioF = -1;
+		date.setAnio(anioF);
+	}
+	
+	@Test
+	public void testNoEsBisiesto(){
+		Fecha date = new Fecha(21,11,2010);
 		try {
-			Fecha date = new Fecha();
-			int anio = 2;
-			date.setAnio(anio);
-		}catch(Exception ex) {
-			Assert.fail("Se ha producido una excepción");
+			assertEquals(false,date.esBisiesto(date));
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 	
 	@Test
-	public void testSetMesAnio() {
-		Fecha date = new Fecha();
-		int anio = 28;
-		exceptionRule.expect(InputMismatchException.class);
-		date.setMes(anio);
-	}
-	
-	@Test
-	public void testNoEsBisiesto() throws Exception {
-		Fecha date = new Fecha(21,11,2010);
-		assertEquals(false,date.esBisiesto(date));
-	}
-	
-	@Test
-	public void testEsBisiesto() throws Exception {
+	public void testEsBisiesto() {
 		Fecha date = new Fecha(21,11,2020);
-		assertEquals(true,date.esBisiesto(date));
+		try {
+			assertEquals(true,date.esBisiesto(date));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	
