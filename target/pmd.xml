@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.49.0" timestamp="2022-12-21T20:05:43.010">
+<file name="G:\Eclipse_proyectos\ISO2-2022-Testing-P1\src\main\java\es\uclm\iso2\p1\Fecha.java">
+<violation beginline="43" endline="43" begincolumn="9" endcolumn="62" rule="UselessParentheses" ruleset="Code Style" package="es.uclm.iso2.p1" class="Fecha" method="esBisiesto" externalInfoUrl="https://pmd.github.io/pmd-6.49.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+</file>
+</pmd>
